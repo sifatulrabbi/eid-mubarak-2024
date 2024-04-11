@@ -8,22 +8,22 @@ import (
 	"time"
 )
 
-type Canvas20x50 struct {
-	Board [20][50]string
+type Canvas struct {
+	Board [30][100]string
 	Stop  bool
 	Done  chan bool
 }
 
-func NewCanvas() *Canvas20x50 {
-	c := Canvas20x50{Stop: false, Done: make(chan bool)}
+func NewCanvas() *Canvas {
+	c := Canvas{Stop: false, Done: make(chan bool)}
 	return &c
 }
 
-func (c *Canvas20x50) ApplyPaint(addr [2]int, s string) {
+func (c *Canvas) ApplyPaint(addr [2]int, s string) {
 	c.Board[addr[0]][addr[1]] = s
 }
 
-func (c *Canvas20x50) RenderLoop() {
+func (c *Canvas) RenderLoop() {
 	for {
 		if c.Stop {
 			c.Done <- true
@@ -48,6 +48,6 @@ func (c *Canvas20x50) RenderLoop() {
 		}
 		fmt.Println(out)
 
-		time.Sleep(time.Second / 120)
+		time.Sleep(time.Second / 60)
 	}
 }
