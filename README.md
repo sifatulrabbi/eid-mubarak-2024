@@ -8,4 +8,4 @@ make run
 
 ## Final output
 
-![Final output](./docs/final-output-001.mp4)
+![Final output](./docs/final-output-001.gif)
