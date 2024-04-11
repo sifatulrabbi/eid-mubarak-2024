@@ -9,7 +9,7 @@ import (
 )
 
 type Canvas struct {
-	Board [30][100]string
+	Board [20][100]string
 	Stop  bool
 	Done  chan bool
 }
