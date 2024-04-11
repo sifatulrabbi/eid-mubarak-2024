@@ -15,7 +15,14 @@ type Canvas struct {
 }
 
 func NewCanvas() *Canvas {
-	c := Canvas{Stop: false, Done: make(chan bool)}
+	c := Canvas{}
+	c.Stop = false
+	c.Done = make(chan bool)
+	for i := 0; i < 20; i++ {
+		for j := 0; j < 100; j++ {
+			c.Board[i][j] = " "
+		}
+	}
 	return &c
 }
 
@@ -48,6 +55,6 @@ func (c *Canvas) RenderLoop() {
 		}
 		fmt.Println(out)
 
-		time.Sleep(time.Second / 60)
+		time.Sleep(time.Millisecond * 1000 / 60)
 	}
 }
